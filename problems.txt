@@ -1,0 +1,5 @@
+C program to count number of digits in an integer
+C program to find first and last digit of any number
+C program to swap first and last digit of a number
+C program to find sum of digits of a number
+C program to find reverse of a number

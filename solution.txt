@@ -1,0 +1,160 @@
+/* C program to count number of digits in an integer */
+
+#include <stdio.h>
+#include <stdlib.h> // For abs() function
+
+int countDigits(int number) {
+    int digitCount = 0;
+    // Take absolute value to handle negative numbers correctly
+    number = abs(number);
+    // Count digits
+    while (number != 0) {
+        digitCount++;
+        number /= 10;
+    }
+    return digitCount;
+}
+
+int main() {
+    int number;
+    printf("Enter your number: \n");
+    scanf("%d", &number);
+    printf("Number of digits: %d\n", countDigits(number));
+    return 0;
+}
+
+/* C program to find first and last digit of any number */
+
+#include <stdio.h>
+
+// Function to find the first and last digits of a number
+void findFirstAndLastDigit(int number, int *first, int *last) {
+    *last = number % 10; // Extracting the last digit
+
+    // Finding the first digit
+    while (number >= 10) {
+        number /= 10;
+    }
+    *first = number;
+}
+
+int main() {
+    int number, first, last;
+
+    printf("Enter your number: \n");
+    scanf("%d", &number);
+
+    // Call the function to find the first and last digits
+    findFirstAndLastDigit(number, &first, &last);
+
+    printf("First digit: %d\n", first);
+    printf("Last digit: %d\n", last);
+
+    return 0;
+}
+
+/* C program to swap first and last digit of a number */
+
+// Function to count the number of digits in a number
+int countDigits(int number) {
+	int count = 0;
+	while (number != 0) {
+		number /= 10;
+		count++;
+	}
+	return count;
+}
+
+// Function to swap the first and last digits of a number
+int swapFirstAndLastDigit(int number) {
+	int numDigits = countDigits(number);
+
+	// Extract the first and last digits
+	int firstDigit = number / (int)pow(10, log10(number));
+	int lastDigit = number % 10;
+
+	// Remove the first and last digits from the number
+	//1234
+	number %= (int)pow(10, numDigits - 1);//234
+	number /= 10;//23
+
+	//4+234+1-->4000+23+1-->4024 not 4231-->4000+10*23+1-->4231
+	// Reconstruct the number with first and last digits swapped
+	number = lastDigit * (int)pow(10, numDigits - 1) + number * 10 + firstDigit;
+
+	return number;
+}
+
+int main() {
+	int number;
+
+	// Input the number from the user
+	printf("Enter a number: ");
+	fflush(stdin);fflush(stdout);
+
+	scanf("%d", &number);
+
+	// Swap the first and last digits
+	int swappedNumber = swapFirstAndLastDigit(number);
+
+	// Output the swapped number
+	printf("Number after swapping first and last digits: %d\n", swappedNumber);
+	return 0;
+}
+
+/* C program to find sum of digits of a number */
+
+#include <stdio.h>
+
+// Function to calculate the sum of digits of a number
+int sumOfDigits(int number) {
+    int sum = 0;
+    while (number != 0) {
+        sum += number % 10;
+        number /= 10;
+    }
+    return sum;
+}
+
+int main() {
+    int number;
+
+    printf("Enter any number: ");
+    scanf("%d", &number);
+
+    // Call the function to calculate the sum of digits
+    int sum = sumOfDigits(number);
+
+    printf("Sum of digits is %d\n", sum);
+
+    return 0;
+}
+
+/* C program to find reverse of a number */
+
+#include <stdio.h>
+
+// Function to reverse the digits of a number
+int reverseNumber(int number) {
+    int reversed = 0;
+    while (number != 0) {
+        reversed = reversed * 10 + number % 10;
+        number /= 10;
+    }
+    return reversed;
+}
+
+int main() {
+    int number;
+
+    printf("Enter any number: ");
+    fflush(stdin);
+    scanf("%d", &number);
+
+    // Call the function to reverse the number
+    int reversed = reverseNumber(number);
+
+    printf("Reversed number is: %d\n", reversed);
+
+    return 0;
+}
